@@ -7,28 +7,14 @@ A comprehensive guide for setting up and using various Machine Learning Potentia
 - pip (package installer for Python)
 - git
 
-## Quick Start Example
-The following notebook demonstrates the core functionality:
-```python
-# Example from '6_use_matCalc/matcalc/examples/Calculating MLIP properties.ipynb'
-# This notebook shows how to:
-# 1. Load different ML potentials (M3GNet, CHGNet, MACE, SevenNet)
-# 2. Calculate material properties
-# 3. Compare results between different models
+## Supported ML Models
 
-# Key steps:
-# 1. Set up API key
-with open('mp_api_key.txt', 'r') as f:
-    api_key = f.read().strip()
-
-# 2. Load models
-from matcalc.utils import get_universal_calculator
-models = [(name, get_universal_calculator(name)) 
-          for name in ("M3GNet", "CHGNet", "MACE", "SevenNet")]
-
-# 3. Calculate properties
-# See notebook for full examples of property calculations
-```
+### Core Models
+- **CHGNet**: Universal deep learning potential for materials
+- **MatGL**: Graph Learning for Materials
+- **MACE**: Message Passing Neural Networks
+- **SevenNet**: Deep learning potential for materials
+- **ORB Models**: Pretrained models for atomic simulations
 
 ## Installation Guide
 
@@ -65,6 +51,63 @@ pip install git+https://github.com/materialsvirtuallab/matgl.git  # MatGL
 pip install git+https://github.com/ACEsuit/mace.git  # MACE
 pip install git+https://github.com/MDIL-SNU/SevenNet.git  # SevenNet
 ```
+
+# 8. Install ORB Models
+```bash
+pip install orb-models
+pip install "pynanoflann@git+https://github.com/dwastberg/pynanoflann#egg=af434039ae14bedcbb838a7808924d6689274168",
+```
+
+## example using ORB models
+```python
+from orb_models.forcefield import pretrained
+from orb_models.forcefield.calculator import ORBCalculator
+# initialize model
+orbff = pretrained.orb_d3_v2(device="cpu") # or device="cuda"
+calc = ORBCalculator(orbff, device="cpu")
+#Set up structure and calculate
+atoms.set_calculator(calc)
+energy = atoms.get_potential_energy()
+forces = atoms.get_forces()
+```
+
+
+## Available ORB Models
+- **orb-v2**: Trained on MPTraj + Alexandria
+- **orb-mptraj-only-v2**: Trained on MPTraj dataset only
+- **orb-d3-v2**: Trained with integrated D3 corrections (recommended)
+- **orb-d3-{sm,xs}-v2**: Smaller versions of orb-d3-v2
+
+## Materials Project API Setup
+1. Register at [Materials Project](https://materialsproject.org/)
+2. Get your API key from your dashboard
+3. Create `mp_api_key.txt` in your working directory
+4. Add your API key to the file
+
+## Common Issues and Solutions
+
+### M1 Mac Issues
+- If DGL fails: Try reinstalling with CPU-only version
+- PyTorch issues: Stick to versions specified above
+- Memory errors: Reduce batch sizes in calculations
+
+### Linux/Windows Issues
+- CUDA version conflicts: Match PyTorch and DGL CUDA versions
+- DGL installation fails: Try CPU version first
+- ORB Models: Windows support not guaranteed
+
+### General Troubleshooting
+1. Always use Python 3.11
+2. Create fresh virtual environment if conflicts occur
+3. Install packages in the order specified
+4. Check GPU compatibility if using CUDA versions
+
+## References
+- [MatCalc Documentation](https://materialsvirtuallab.github.io/matcalc)
+- [CHGNet Paper](https://www.nature.com/articles/s43588-022-00349-3)
+- [Materials Project](https://materialsproject.org/)
+- [ORB Models Repository](https://github.com/ur-whitelab/orb-models)
+
 
 ### For Linux Users
 ```bash
