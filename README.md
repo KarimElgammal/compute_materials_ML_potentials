@@ -1,61 +1,158 @@
-# Compute Materials at atomistic scale using ML Potentials
+# Materials ML Potentials Guide
 
-This repository contains tools and scripts for computing materials properties using machine learning potentials. I gave this seminar talk at the American University in Cairo in November 2024, and this repository contains the code for the talk. The talk is about using machine learning potentials to compute materials properties at the atomistic scale. It was invited talk as part of course given by [Dr. Mostafa Youssef](https://sites.google.com/aucegypt.edu/materialstheorygroup/home).
+A comprehensive guide for setting up and using various Machine Learning Potentials for materials science calculations. This guide covers installation and setup across different platforms.
 
-## Repository Structure
+## Prerequisites
+- Python 3.11 (Python 3.12 not supported)
+- pip (package installer for Python)
+- git
 
-### 0_system_setup/
-- Setup scripts and initial configuration files for system preparation
-- Contains base structure files and input parameters
+## Installation Guide
 
-### 1_geometry_optimisation/
-- Scripts for performing geometry optimization calculations
-- Optimizes atomic positions to find minimum energy configurations
-- Outputs energy and structure files at each optimization step
-
-### 3_substrate_energy/
-- Calculations for isolated substrate systems
-- Computes reference energies for substrate surfaces
-
-### 4_adsorbate_energy/
-- Calculations for isolated adsorbate molecules
-- Determines reference energies for adsorbate species
-
-### 5_calc_binding_energy/
-- Scripts for computing binding energies
-- Combines results from substrate and adsorbate calculations
-- Outputs final binding energy analysis
-
-### 7_example_with_Cu/
-- Complete example calculation for Cu(111) surface using orbModel
-- Includes:
-  - System setup
-  - Geometry optimization
-  - Energy calculations
-  - Results analysis
-
-### 99_seminar_slides/
-- Presentation slides for the talk
-
-## Key Features
-
-- Automated binding energy calculations
-- Geometry optimization with force convergence
-- Support for periodic boundary conditions
-- Analysis tools for energy and structure data
-- Example calculations with Cu(111) surface
-
-## Dependencies
-
-### OrbModels
-Install OrbModels and its dependencies:
+### For M1/M2 Mac Users
 ```bash
-pip install orb-models
-pip install "pynanoflann@git+https://github.com/dwastberg/pynanoflann#egg=af434039ae14bedcbb838a7808924d6689274168"
+# 1. Set up Python environment
+pyenv install 3.11
+pyenv virtualenv 3.11 MLpotentials
+pyenv activate MLpotentials
+
+# 2. Clean existing installations
+pip install --upgrade pip
+pip uninstall -y torch torchvision torchaudio lightning pytorch-lightning chgnet matgl dgl
+
+# 3. Install PyTorch ecosystem (M1-specific versions)
+pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0
+
+# 4. Install DGL (CPU version for M1)
+pip install dgl -f https://data.dgl.ai/wheels/cpu/repo.html
+
+# 5. Install base dependencies
+pip install numpy==1.26.4 scipy scikit-learn==1.3.1 pandas
+pip install mp-api matplotlib tqdm joblib==1.4.2
+
+# 6. Install MatCalc and its dependencies
+git clone https://github.com/materialsvirtuallab/matcalc.git
+cd matcalc
+pip install -r requirements.txt
+pip install -e .
+
+# 7. Install ML Potential Models
+pip install git+https://github.com/CederGroupHub/chgnet  # CHGNet
+pip install git+https://github.com/materialsvirtuallab/matgl.git  # MatGL
+pip install git+https://github.com/ACEsuit/mace.git  # MACE
+pip install git+https://github.com/MDIL-SNU/SevenNet.git  # SevenNet
 ```
 
-### MatCalc
-Install MatCalc using:
+### For Linux Users
 ```bash
-pip install git+https://github.com/materialsvirtuallab/matcalc.git
+# 1. Set up Python environment
+python -m venv MLpotentials
+source MLpotentials/bin/activate
+
+# 2. Install PyTorch with CUDA support (if GPU available)
+pip install torch torchvision torchaudio
+
+# 3. Install DGL with CUDA support
+pip install dgl -f https://data.dgl.ai/wheels/cu117/repo.html
+
+# 4. Follow steps 5-7 from M1 Mac installation
 ```
+
+### For Windows Users
+```bash
+# 1. Set up Python environment
+python -m venv MLpotentials
+MLpotentials\Scripts\activate
+
+# 2. Install PyTorch
+pip install torch torchvision torchaudio
+
+# 3. Install DGL
+pip install dgl -f https://data.dgl.ai/wheels/cu117/repo.html
+
+# 4. Follow steps 5-7 from M1 Mac installation
+```
+
+## Materials Project API Setup
+1. Register at [Materials Project](https://materialsproject.org/)
+2. Get your API key from your dashboard
+3. Create `mp_api_key.txt` in your working directory
+4. Add your API key to the file
+
+## Package Overview
+
+### Core Packages
+- **MatCalc**: Main framework for materials calculations
+- **PyTorch**: Deep learning framework
+- **DGL**: Deep Graph Library for graph neural networks
+
+### ML Potential Models
+- **CHGNet**: Universal deep learning potential for materials
+- **MatGL**: Graph Learning for Materials
+- **MACE**: Message Passing Neural Networks
+- **SevenNet**: Deep learning potential for materials
+
+### Supporting Libraries
+- **NumPy**: Numerical computing
+- **SciPy**: Scientific computing
+- **Pandas**: Data manipulation
+- **mp-api**: Materials Project API client
+
+## Verification
+Test your installation:
+```python
+# Test MatCalc and ML models
+from matcalc.utils import get_universal_calculator
+models = [(name, get_universal_calculator(name)) 
+          for name in ("M3GNet", "CHGNet", "MACE", "SevenNet")]
+
+# Test Materials Project API
+with open('mp_api_key.txt', 'r') as f:
+    api_key = f.read().strip()
+from mp_api.client import MPRester
+mpr = MPRester(api_key)
+```
+
+## Common Issues and Solutions
+
+### M1 Mac Issues
+- If DGL fails: Try reinstalling with CPU-only version
+- PyTorch issues: Stick to versions specified above
+- Memory errors: Reduce batch sizes in calculations
+
+### Linux/Windows Issues
+- CUDA version conflicts: Match PyTorch and DGL CUDA versions
+- DGL installation fails: Try CPU version first
+
+### General Troubleshooting
+1. Always use Python 3.11
+2. Create fresh virtual environment if conflicts occur
+3. Install packages in the order specified
+4. Check GPU compatibility if using CUDA versions
+
+## Usage Examples
+```python
+# Basic structure optimization example
+from matcalc.utils import get_universal_calculator
+from pymatgen.core import Structure
+
+# Load calculator
+calc = get_universal_calculator("CHGNet")
+
+# Load structure
+structure = Structure.from_file("your_structure.cif")
+
+# Calculate properties
+energy = calc.get_potential_energy(structure)
+forces = calc.get_forces(structure)
+```
+
+## References
+- [MatCalc Documentation](https://materialsvirtuallab.github.io/matcalc)
+- [CHGNet Paper](https://www.nature.com/articles/s43588-022-00349-3)
+- [Materials Project](https://materialsproject.org/)
+
+## License
+This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
+
+I made sure that './6_use_matCalc_notWorking/matcalc/examples/Calculating MLIP properties.ipynb' is working by setting the MP_API_KEY in the environment. matcalc is a great package for computing materials properties using machine learning potentials.
