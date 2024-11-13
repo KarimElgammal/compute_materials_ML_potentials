@@ -162,3 +162,36 @@ cython_debug/
 #.idea/
 .DS_Store
 mp_api_key.txt
+
+# Ignore matcalc installation directory
+6_use_matCalc/matcalc/
+
+# Common Python ignores
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environment
+venv/
+ENV/
+MLpotentials/
+
+# API keys
+mp_api_key.txt
