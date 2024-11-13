@@ -7,6 +7,29 @@ A comprehensive guide for setting up and using various Machine Learning Potentia
 - pip (package installer for Python)
 - git
 
+## Quick Start Example
+The following notebook demonstrates the core functionality:
+```python
+# Example from '6_use_matCalc/matcalc/examples/Calculating MLIP properties.ipynb'
+# This notebook shows how to:
+# 1. Load different ML potentials (M3GNet, CHGNet, MACE, SevenNet)
+# 2. Calculate material properties
+# 3. Compare results between different models
+
+# Key steps:
+# 1. Set up API key
+with open('mp_api_key.txt', 'r') as f:
+    api_key = f.read().strip()
+
+# 2. Load models
+from matcalc.utils import get_universal_calculator
+models = [(name, get_universal_calculator(name)) 
+          for name in ("M3GNet", "CHGNet", "MACE", "SevenNet")]
+
+# 3. Calculate properties
+# See notebook for full examples of property calculations
+```
+
 ## Installation Guide
 
 ### For M1/M2 Mac Users
@@ -155,4 +178,4 @@ forces = calc.get_forces(structure)
 ## License
 This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
 
-I made sure that './6_use_matCalc_notWorking/matcalc/examples/Calculating MLIP properties.ipynb' is working by setting the MP_API_KEY in the environment. matcalc is a great package for computing materials properties using machine learning potentials.
+I made sure that '6_use_matCalc/matcalc/examples/Calculating MLIP properties.ipynb' is working by setting the MP_API_KEY in the environment. matcalc is a great package for computing materials properties using machine learning potentials.
