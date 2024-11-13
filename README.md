@@ -49,7 +49,7 @@ pip install git+https://github.com/materialsvirtuallab/matgl.git  # MatGL
 pip install git+https://github.com/ACEsuit/mace.git  # MACE
 pip install git+https://github.com/MDIL-SNU/SevenNet.git  # SevenNet
 
-# 8. Install ORB Models
+# 8. Install ORB Models (I advice if you install it on different )
 pip install orb-models
 pip install "pynanoflann@git+https://github.com/dwastberg/pynanoflann#egg=af434039ae14bedcbb838a7808924d6689274168",
 ```
