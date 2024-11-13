@@ -1,0 +1,1 @@
+python calc_ground_state_energy.py input.xyz --calc-binding

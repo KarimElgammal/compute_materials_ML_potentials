@@ -1,0 +1,12 @@
+Binding Energy Analysis
+======================
+
+Total system energy:     -419.835510 eV
+Substrate energy:        -369.635071 eV
+Adsorbate energy:        -53.003811 eV
+Binding energy:          -2.803372 eV
+
+Files used:
+Total system:    ../2_supercell_energy/orb_energy_optimized_structure_20241112_110612/energy.txt
+Substrate:       ../3_substrate_energy/orb_energy_optimized_structure_20241112_110749/energy.txt
+Adsorbate:       ../4_adsorbate_energy/orb_energy_optimized_structure_20241112_110947/energy.txt

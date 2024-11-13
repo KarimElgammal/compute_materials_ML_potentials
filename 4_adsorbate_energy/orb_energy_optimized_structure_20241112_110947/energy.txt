@@ -1,0 +1,4 @@
+System: optimized_structure
+Number of atoms: 8
+Composition: CNCN2H3
+Ground state energy: -53.003811 eV

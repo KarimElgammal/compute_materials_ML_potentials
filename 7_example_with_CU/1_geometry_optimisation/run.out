@@ -1,0 +1,45 @@
+Successfully loaded structure with 99 atoms
+Output directory created: orb_opt_Cu_111_4x4x6_20241112_094945
+Initializing ORB-D3 model on cpu...
+Initial energy: -439.602 eV
+Initial molecule-surface distance: 3.182 Å
+Starting geometry optimization...
+
+Optimization complete!
+Status: Converged
+Final energy: -440.031 eV
+Energy change: -0.429 eV
+Final molecule-surface distance: 13.967 Å
+Maximum atomic displacement: 19.026 Å
+Optimized structure saved to orb_opt_Cu_111_4x4x6_20241112_094945/optimized_structure.xyz
+Full optimization details available in orb_opt_Cu_111_4x4x6_20241112_094945
+Successfully loaded structure with 99 atoms
+Output directory created: orb_opt_Cu_111_4x4x6_20241112_103209
+Initializing ORB-D3 model on cpu...
+Initial energy: -438.686 eV
+Initial molecule-surface distance: 2.260 Å
+Starting geometry optimization...
+
+Optimization complete!
+Status: Converged
+Final energy: -439.856 eV
+Energy change: -1.170 eV
+Final molecule-surface distance: 3.223 Å
+Maximum atomic displacement: 2.213 Å
+Optimized structure saved to orb_opt_Cu_111_4x4x6_20241112_103209/optimized_structure.xyz
+Full optimization details available in orb_opt_Cu_111_4x4x6_20241112_103209
+Successfully loaded structure with 99 atoms
+Output directory created: orb_opt_Cu_111_4x4x6_20241112_103746
+Initializing ORB-D3 model on cpu...
+Initial energy: -438.686 eV
+Initial molecule-surface distance: 2.260 Å
+Starting geometry optimization...
+
+Optimization complete!
+Status: Converged
+Final energy: -439.856 eV
+Energy change: -1.170 eV
+Final molecule-surface distance: 3.223 Å
+Maximum atomic displacement: 2.213 Å
+Optimized structure saved to orb_opt_Cu_111_4x4x6_20241112_103746/optimized_structure.xyz
+Full optimization details available in orb_opt_Cu_111_4x4x6_20241112_103746

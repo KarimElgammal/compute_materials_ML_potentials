@@ -1,0 +1,4 @@
+System: optimized_structure
+Number of atoms: 104
+Composition: Al96CNCN2H3
+Ground state energy: -419.835510 eV

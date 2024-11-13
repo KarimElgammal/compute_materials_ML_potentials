@@ -1,0 +1,2 @@
+python use_orb.py Cu_111_4x4x6.xyz --fmax 0.01 --max-steps 1000 >> run.out
+python use_orb.py input.xyz --free-layers 3  # Optimize top 3 layers
