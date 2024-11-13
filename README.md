@@ -7,9 +7,8 @@ A comprehensive guide for setting up and using various Machine Learning Potentia
 - pip (package installer for Python)
 - git
 
-## Supported ML Models
+## ML Models discussed with examples here
 
-### Core Models
 - **CHGNet**: Universal deep learning potential for materials
 - **MatGL**: Graph Learning for Materials
 - **MACE**: Message Passing Neural Networks
@@ -18,7 +17,6 @@ A comprehensive guide for setting up and using various Machine Learning Potentia
 
 ## Installation Guide
 
-### For M1/M2 Mac Users
 ```bash
 # 1. Set up Python environment
 pyenv install 3.11
@@ -50,10 +48,8 @@ pip install git+https://github.com/CederGroupHub/chgnet  # CHGNet
 pip install git+https://github.com/materialsvirtuallab/matgl.git  # MatGL
 pip install git+https://github.com/ACEsuit/mace.git  # MACE
 pip install git+https://github.com/MDIL-SNU/SevenNet.git  # SevenNet
-```
 
 # 8. Install ORB Models
-```bash
 pip install orb-models
 pip install "pynanoflann@git+https://github.com/dwastberg/pynanoflann#egg=af434039ae14bedcbb838a7808924d6689274168",
 ```
