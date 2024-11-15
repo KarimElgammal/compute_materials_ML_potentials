@@ -185,28 +185,9 @@ from ase.calculators.lammpsrun import LAMMPS
 # ... validation code ...
 ```
 
-## Examples Repository
-
-Find complete examples in our [GitHub repository](https://github.com/your-repo/examples) including:
-- Structure optimization
-- Molecular dynamics
-- Thermal properties calculation
-- Mechanical properties
-
 ## References
 
 1. [LAMMPS Documentation](https://docs.lammps.org/)
 2. [ORB-LAMMPS-PATCH](https://github.com/stefanbringuier/ORB-LAMMPS-PATCH)
 3. [Advance Soft Corp LAMMPS](https://github.com/advancesoftcorp/lammps)
 4. Yang, Y., Zhang, S., Ranasinghe, K. D., Isayev, O., & Roitberg, A. E. (2024). Machine Learning of Reactive Potentials. Annual Review of Physical Chemistry, 75, 371-395. [DOI](https://doi.org/10.1146/annurev-physchem-062123-024417)
-
-## Support
-
-For issues and questions:
-- Open an issue on the GitHub repository
-- Check the LAMMPS forum
-- Consult the specific ML potential documentation
-
-## License
-
-This integration guide is provided under the same license as the main project. See LICENSE file for details. 
