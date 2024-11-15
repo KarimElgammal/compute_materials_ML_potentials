@@ -187,7 +187,7 @@ from ase.calculators.lammpsrun import LAMMPS
 
 ## References
 
-1. [LAMMPS Documentation](https://docs.lammps.org/)
+1. [LAMMPS external packages documentation](https://www.lammps.org/external.html)
 2. [ORB-LAMMPS-PATCH](https://github.com/stefanbringuier/ORB-LAMMPS-PATCH)
 3. [Advance Soft Corp LAMMPS](https://github.com/advancesoftcorp/lammps)
 4. Yang, Y., Zhang, S., Ranasinghe, K. D., Isayev, O., & Roitberg, A. E. (2024). Machine Learning of Reactive Potentials. Annual Review of Physical Chemistry, 75, 371-395. [DOI](https://doi.org/10.1146/annurev-physchem-062123-024417)
